@@ -1,6 +1,6 @@
 // 引入express
 const express = require('express')
-const fs = require('fs')
+const router = require('./router.js')
 // 搭建服务器
 const app = express()
 // 添加端口监听
@@ -17,11 +17,4 @@ app.use('/uploads',express.static('uploads'))
 app.set('view engine','ejs')
 app.set('views',__dirname+'/views')
 
-// 添加路由配置
-app.get('/',(req,res) => {
-   res.render('index.ejs')
-})
-
-app.use('/admin',(req,res) => {
-  res.render('admin/index.ejs')
-})
+app.use(router)
